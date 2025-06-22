@@ -158,11 +158,19 @@ flowchart TD
     D --> G[Service Fee for Execution]
 ```
 
-### Typical Fee Ranges
-- **Bridge Fee**: $1-5 USD equivalent
-- **Arbitrum Gas**: $0.10-0.50 USD
-- **Solver Fee**: 0.1-0.3% of amount
-- **Total**: Usually $2-10 USD for typical amounts
+### Fee Ranges by Amount Size
+
+**For Educational Amounts (< $1 USD)**:
+- Bridge fees: 3-5% of amount (minimum threshold effect)
+- Example: 0.00004 ETH withdrawal → ~0.000001 ETH fee (3%)
+
+**For Typical Amounts ($10-100 USD)**:
+- Bridge Fee: $1-5 USD equivalent  
+- Arbitrum Gas: $0.10-0.50 USD
+- Solver Fee: 0.1-0.3% of amount
+- Total: Usually $2-10 USD
+
+**Key Point**: Smaller amounts have higher percentage fees due to fixed bridge costs. Consider batching operations for efficiency.
 
 ## Executing the Withdrawal
 
@@ -186,6 +194,38 @@ Transaction hash on NEAR: GHI789JKL...
 Withdrawal initiated successfully.
 Monitor Arbitrum transaction at: https://arbiscan.io/tx/0xabc123...
 ```
+
+## Understanding Status Progression During Withdrawal
+
+Cross-chain withdrawals take significantly longer than on-chain swaps. Here's what to expect:
+
+**Actual Terminal Output Example**:
+```bash
+Waiting for quote execution to complete ...
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Current quote status is PROCESSING
+Withdraw was settled successfully!
+```
+
+**Status Meanings**:
+- `PENDING_DEPOSIT` (1-2 minutes): Solver is detecting your NEAR transaction
+- `PROCESSING` (5-15 minutes): Cross-chain bridge is executing the transfer
+- `Complete`: ETH has been delivered to your Arbitrum address
+
+> **⏳ Patience Required**: This is completely normal! Cross-chain operations require multiple blockchain confirmations and bridge processing time.
 
 ## Monitoring the Withdrawal
 

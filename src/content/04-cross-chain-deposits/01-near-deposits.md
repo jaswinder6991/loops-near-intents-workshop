@@ -49,7 +49,7 @@ Before we make the deposit, let's check your current token balances to understan
 
 ### Check Native NEAR Balance
 ```bash
-near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet
+near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet now
 ```
 
 You should see something like:
@@ -77,6 +77,45 @@ Replace `YOUR_ACCOUNT_ID` with your actual account ID. You'll likely see:
 ```
 
 This confirms you don't have any cross-chain assets yet.
+
+## Required: Register with wrap.near Contract (First-time Setup)
+
+Before making your first deposit, you need to register with the wrap.near contract. This is a one-time setup that allows your account to receive wrapped NEAR tokens.
+
+> **Important:** This is a critical step that's required for first-time users. Without this registration, your deposit will fail with "account doesn't have enough balance."
+
+### Step 1: Copy your credentials to the correct location
+```bash
+mkdir -p ~/.near-credentials/mainnet
+cp ~/.near-credentials/implicit/YOUR_ACCOUNT_ID.json ~/.near-credentials/mainnet/YOUR_ACCOUNT_ID.json
+```
+
+### Step 2: Register with wrap.near
+```bash
+near contract call-function as-transaction wrap.near storage_deposit \
+  json-args '{"account_id": "YOUR_ACCOUNT_ID"}' \
+  prepaid-gas '30.0 Tgas' \
+  attached-deposit '0.00125 NEAR' \
+  sign-as YOUR_ACCOUNT_ID \
+  network-config mainnet \
+  sign-with-keychain send
+```
+
+Expected output:
+```bash
+Function execution return value (printed to stdout):
+{
+  "available": "0",
+  "total": "1250000000000000000000"
+}
+```
+
+**What This Does:**
+- Registers your account with the wrap.near contract (~0.00125 NEAR cost)
+- Creates storage space for your wrapped NEAR tokens
+- One-time setup - you never need to do this again for your account
+
+> **Cost Note:** This registration costs approximately 0.00125 NEAR and is required before any deposit operations.
 
 ## Examining the Deposit Code
 
@@ -158,7 +197,7 @@ Let's confirm the deposit worked by checking your balances again.
 
 ### Check Updated Native NEAR Balance
 ```bash
-near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet
+near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet now
 ```
 
 Your balance should be reduced by approximately 0.1 NEAR plus gas fees:
@@ -186,6 +225,19 @@ Now you should see:
 ```
 
 The first value represents your 0.1 NEAR in cross-chain form!
+
+### Understanding Balance Numbers
+
+The balance output uses the smallest token units:
+- `100000000000000000000000` represents 0.1 NEAR (yoctoNEAR units)
+- `50000000000000000000000` represents 0.05 NEAR (yoctoNEAR units)
+- For ETH tokens: `42281346033444` represents ~0.000042 ETH (wei units)
+
+**Quick Conversion**:
+- NEAR: divide by 10^24 (1 followed by 24 zeros)
+- ETH: divide by 10^18 (1 followed by 18 zeros)
+
+Example: `100000000000000000000000 ÷ 1000000000000000000000000 = 0.1 NEAR`
 
 ## Understanding the Transaction
 

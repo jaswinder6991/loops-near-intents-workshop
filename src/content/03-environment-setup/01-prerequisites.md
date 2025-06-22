@@ -162,7 +162,7 @@ Open `.env` in your preferred editor and fill in these values:
 
 ```bash
 # Your NEAR account ID (the 64-character string from earlier)
-NEAR_ACCOUNT_ID=your_account_id_here
+ACCOUNT_ID=your_account_id_here
 
 # Your NEAR private key (from the export command)
 NEAR_PRIVATE_KEY=your_private_key_here
@@ -185,8 +185,10 @@ Let's make sure everything is working correctly.
 
 ### Test NEAR CLI Connection
 ```bash
-near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet
+near account view-account-summary YOUR_ACCOUNT_ID network-config mainnet now
 ```
+
+> **Note:** The `now` parameter tells NEAR CLI to use the latest block, avoiding interactive prompts that ask you to choose between "now" and previous blocks.
 
 Expected output:
 ```bash
@@ -208,7 +210,7 @@ You should see version numbers for both.
 Create a quick test file:
 
 ```bash
-echo 'console.log("NEAR Account:", process.env.NEAR_ACCOUNT_ID);' > test-env.js
+echo 'console.log("NEAR Account:", process.env.ACCOUNT_ID);' > test-env.js
 node -r dotenv/config test-env.js
 rm test-env.js
 ```

@@ -110,6 +110,8 @@ inputAmount: '400000000000000000'
 
 ## Executing the Arbitrum Deposit
 
+> **Educational Note**: For small workshop amounts (< $1 USD), reverse flows may not be cost-effective due to bridge fees exceeding the transaction value. This section demonstrates the concept - in production, reverse flows are practical for amounts > $10 USD where bridge fees represent < 10% of the transaction value.
+
 Run the deposit script:
 
 ```bash

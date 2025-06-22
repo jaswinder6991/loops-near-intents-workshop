@@ -204,6 +204,18 @@ You should now see:
 
 Your NEAR has been swapped for ETH! The ETH amount will vary based on current exchange rates.
 
+### Understanding Balance Numbers
+
+The balance output uses the smallest token units:
+- `0` represents 0 NEAR (yoctoNEAR units)
+- `45678901234567890` represents ~0.000456 ETH (wei units)
+
+**Quick Conversion**:
+- NEAR: divide by 10^24 (1 followed by 24 zeros)
+- ETH: divide by 10^18 (1 followed by 18 zeros)
+
+Example: `45678901234567890 ÷ 1000000000000000000 = ~0.000456 ETH`
+
 ## Understanding the ETH Amount
 
 The ETH amount is displayed in wei (smallest ETH unit). To convert to standard ETH:
