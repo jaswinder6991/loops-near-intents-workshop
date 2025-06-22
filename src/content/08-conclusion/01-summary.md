@@ -181,7 +181,7 @@ Create a basic web interface that:
 
 ### Technical Documentation
 - [NEAR Protocol Documentation](mdc:https://docs.near.org)
-- [1Click API Reference](mdc:https://docs.1click.xyz)
+- [1Click API Reference](mdc:https://docs.near-intents.org/near-intents/integration/distribution-channels/1click-api)
 - [NEAR Intents Specification](mdc:https://github.com/near/neps)
 - [Cross-Chain Bridge Documentation](mdc:https://docs.near.org/bridge)
 

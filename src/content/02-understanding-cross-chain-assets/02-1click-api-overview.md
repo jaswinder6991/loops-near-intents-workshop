@@ -125,16 +125,18 @@ Here's how a typical swap works:
 
 ### Step 1: Request a Quote
 ```javascript
-const quote = await fetch('https://api.1click.xyz/quote', {
+const quote = await fetch('https://1click.chaindefuser.com/v0/quote', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    inputTokenId: 'nep141:wrap.near',
-    outputTokenId: 'nep141:eth.bridge.near', 
-    inputAmount: '100000000000000000000000', // 0.1 NEAR
+    originAsset: 'nep141:wrap.near',
+    destinationAsset: 'nep141:eth.bridge.near', 
+    amount: '100000000000000000000000', // 0.1 NEAR
     depositType: 'INTENTS',
     recipientType: 'INTENTS',
-    refundTo: 'your-account.near'
+    refundTo: 'your-account.near',
+    recipient: 'your-account.near',
+    deadline: new Date(Date.now() + 15 * 60 * 1000).toISOString() // 15 minutes
   })
 });
 ```
@@ -142,11 +144,15 @@ const quote = await fetch('https://api.1click.xyz/quote', {
 ### Step 2: Receive Quote Details
 ```json
 {
-  "depositAddress": "solver123.near",
-  "inputAmount": "100000000000000000000000",
-  "outputAmount": "45678901234567890",
-  "priceImpact": "0.002",
-  "estimatedTime": "1-2 seconds"
+  "quote": {
+    "depositAddress": "solver123.near",
+    "amountIn": "100000000000000000000000",
+    "amountInFormatted": "0.1",
+    "amountOut": "45678901234567890",
+    "amountOutFormatted": "0.000457",
+    "deadline": "2025-01-08T15:00:00Z",
+    "timeEstimate": 120
+  }
 }
 ```
 
@@ -179,7 +185,7 @@ Send your input tokens to the provided `depositAddress`. That's it! The solver w
 You can query the API to see all supported tokens:
 
 ```bash
-curl "https://api.1click.xyz/tokens"
+curl "https://1click.chaindefuser.com/v0/tokens"
 ```
 
 This returns a list of all supported token representations across all chains.

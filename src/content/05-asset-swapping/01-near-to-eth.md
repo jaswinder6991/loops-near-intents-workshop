@@ -115,24 +115,29 @@ The swap script internally calls the 1Click API to get a quote. Here's what happ
 ### Quote Request
 ```javascript
 const quoteRequest = {
-  inputTokenId: 'nep141:wrap.near',
-  outputTokenId: 'nep141:eth.bridge.near',
-  inputAmount: '100000000000000000000000',
+  originAsset: 'nep141:wrap.near',
+  destinationAsset: 'nep141:eth.bridge.near',
+  amount: '100000000000000000000000',
   depositType: 'INTENTS',
   recipientType: 'INTENTS',
-  refundTo: 'your-account.near'
+  refundTo: 'your-account.near',
+  recipient: 'your-account.near',
+  deadline: new Date(Date.now() + 15 * 60 * 1000).toISOString()
 };
 ```
 
 ### Quote Response
 ```json
 {
-  "depositAddress": "solver123.near",
-  "inputAmount": "100000000000000000000000",
-  "outputAmount": "45678901234567890",
-  "priceImpact": "0.002",
-  "route": "NEAR → ETH via NEAR Intents",
-  "estimatedTime": "1-2 seconds"
+  "quote": {
+    "depositAddress": "solver123.near",
+    "amountIn": "100000000000000000000000",
+    "amountInFormatted": "0.1",
+    "amountOut": "45678901234567890",
+    "amountOutFormatted": "0.000457",
+    "deadline": "2025-01-08T15:00:00Z",
+    "timeEstimate": 120
+  }
 }
 ```
 

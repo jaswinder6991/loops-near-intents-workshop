@@ -162,7 +162,7 @@ Need help? Here are your options:
 
 - **Workshop Issues**: Create an issue in this repository
 - **NEAR Development**: Join [NEAR Discord](https://near.chat) #dev-support
-- **1Click API**: Check [API documentation](https://docs.1click.xyz)
+- **1Click API**: Check [API documentation](https://docs.near-intents.org/near-intents/integration/distribution-channels/1click-api)
 - **General Questions**: Ask on [NEAR Forum](https://gov.near.org)
 
 ## 📜 License

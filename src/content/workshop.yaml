@@ -217,7 +217,7 @@ resources:
   - title: "NEAR Protocol Documentation"
     url: "https://docs.near.org"
   - title: "1Click API Reference"
-    url: "https://docs.1click.xyz"
+    url: "https://docs.near-intents.org/near-intents/integration/distribution-channels/1click-api"
   - title: "NEAR Intents Specification"
     url: "https://github.com/near/neps"
   - title: "NEAR Discord Community"
