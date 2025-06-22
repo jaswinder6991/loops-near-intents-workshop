@@ -117,6 +117,32 @@ Function execution return value (printed to stdout):
 
 > **Cost Note:** This registration costs approximately 0.00125 NEAR and is required before any deposit operations.
 
+### 🔬 Technical Deep Dive: Why Storage Deposits Are Universal
+
+**Field Note**: You might wonder whether this storage deposit requirement is specific to CLI-created accounts or if wallet-created accounts also need this step. 
+
+**Answer**: This storage deposit requirement is **universal** and applies to ALL NEAR accounts, regardless of how they were created:
+- ✅ CLI-created accounts (like ours)
+- ✅ Web wallet accounts (wallet.near.org, mynearwallet.com)  
+- ✅ Mobile wallet accounts (Sender, Nightly, etc.)
+- ✅ Hardware wallet accounts (Ledger)
+
+**Why?** This isn't a wallet limitation—it's a fundamental requirement of the [NEP-141 Fungible Token Standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core). Here's the technical reasoning:
+
+1. **Storage Staking**: NEAR uses storage staking, meaning contracts must have sufficient balance to cover storage costs
+2. **Account Registration**: When you first interact with any NEP-141 token (like `wrap.near`), the contract adds your account to its internal `accounts` map
+3. **Blockchain Economics**: Each new map entry consumes on-chain storage bytes that someone must pay for
+4. **Abuse Prevention**: Without this requirement, malicious actors could drain contracts by creating thousands of tiny token balances
+
+**The Economics**: The ~0.00125 NEAR covers the storage cost for your account entry in the contract's state. This is a one-time fee per contract, not per transaction.
+
+**Want to Learn More?**
+- [NEP-145: Storage Management Standard](https://nomicon.io/Standards/StorageManagement) - Technical specification
+- [NEAR Storage Staking Explanation](https://docs.near.org/smart-contracts/anatomy/storage) - How storage costs work
+- [Fungible Token Tutorial](https://docs.near.org/tutorials/fts/registering-accounts) - Deep dive on account registration
+
+This requirement ensures sustainable blockchain economics and prevents storage-based attacks—a key innovation that makes NEAR both secure and scalable.
+
 ## Examining the Deposit Code
 
 Let's look at how the deposit function works before running it. Open `src/deposit.ts` in your editor:
