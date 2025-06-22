@@ -1,4 +1,4 @@
-# 5.1: Swapping NEAR for ETH
+Swapping NEAR for ETH
 
 **Estimated Time:** 25 minutes  
 **Prerequisites:** Successfully deposited NEAR tokens (previous module)  

@@ -1,4 +1,4 @@
-# 8.1: Workshop Summary and Next Steps
+Workshop Summary and Next Steps
 
 **Estimated Time:** 10 minutes  
 **Prerequisites:** Completed all previous modules  
@@ -188,8 +188,8 @@ Create a basic web interface that:
 ### Development Tools
 - [NEAR CLI Reference](mdc:https://docs.near.org/tools/near-cli)
 - [near-api-js Documentation](mdc:https://docs.near.org/tools/near-api-js)
-- [NEAR Testnet](mdc:https://testnet.near.org) for safe experimentation
 - [NEAR Explorer](mdc:https://explorer.near.org) for transaction monitoring
+- [NEAR Wallet](mdc:https://wallet.near.org) for account management
 
 ### Community Resources
 - [NEAR Developers Telegram](mdc:https://t.me/neardev)

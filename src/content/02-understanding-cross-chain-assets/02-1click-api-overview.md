@@ -1,4 +1,4 @@
-# 2.2: 1Click API Overview
+# 1Click API Overview
 
 **Estimated Time:** 20 minutes  
 **Prerequisites:** Understanding of multi-token assets from previous section  

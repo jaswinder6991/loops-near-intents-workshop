@@ -1,4 +1,4 @@
-# 7.1: Reverse Flows and Advanced Patterns
+Reverse Flows and Advanced Patterns
 
 **Estimated Time:** 35 minutes  
 **Prerequisites:** Completed ETH withdrawal to Arbitrum  

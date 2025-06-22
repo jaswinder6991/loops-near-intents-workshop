@@ -1,4 +1,4 @@
-# 6.1: Withdrawing ETH to Arbitrum
+Withdrawing ETH to Arbitrum
 
 **Estimated Time:** 30 minutes  
 **Prerequisites:** Successfully swapped NEAR for ETH (previous module)  

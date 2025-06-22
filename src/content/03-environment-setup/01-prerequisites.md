@@ -1,4 +1,4 @@
-# 3.1: Prerequisites and Installation
+Prerequisites and Installation
 
 **Estimated Time:** 25 minutes  
 **Prerequisites:** Basic command-line familiarity  
@@ -92,8 +92,10 @@ Replace `YOUR_ACCOUNT_ID` with your actual account ID. Save the private key that
 
 Your new account needs NEAR tokens to pay for transaction fees.
 
+> **Important:** NEAR Intents and the 1Click API only work on mainnet. You cannot use testnet for this workshop as the intent infrastructure is not available there.
+
 ### Option A: Request Funds at a Hackathon
-If you're at a hackathon, approach a mentor to request testnet funds.
+If you're at a hackathon, approach a mentor to request mainnet NEAR funds.
 
 ### Option B: Use NEAR Intents Frontend
 If you have funds on any supported chain:
@@ -102,11 +104,11 @@ If you have funds on any supported chain:
 3. Swap some tokens to NEAR
 4. Send NEAR to your new account
 
-### Option C: Use a Testnet Faucet
-For testing purposes, you can use testnet:
-```bash
-near account create-account fund-myself YOUR_TESTNET_ACCOUNT.testnet autogenerate-new-keypair save-to-keychain network-config testnet
-```
+### Option C: Purchase NEAR Tokens
+You can purchase NEAR tokens on any major exchange and send them to your account:
+1. Buy NEAR on exchanges like Binance, Coinbase, or Kraken
+2. Withdraw NEAR to your account address
+3. Wait for confirmation (usually 1-2 minutes)
 
 ### Verify Your Balance
 Check that your account has funds:
@@ -247,7 +249,7 @@ Expected output:
 
 ### Account Creation Fails
 - Ensure you have an internet connection
-- Try using testnet instead of mainnet for practice
+- Verify you're using the correct network (mainnet) for NEAR Intents
 - Check if the account ID is already taken (for named accounts)
 
 ### Node.js Dependencies Fail

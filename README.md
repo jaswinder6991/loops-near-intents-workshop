@@ -59,7 +59,7 @@ This workshop takes you from basic blockchain concepts to building sophisticated
 - Basic understanding of blockchain concepts
 - Familiarity with command-line interfaces
 - Node.js development experience (helpful but not required)
-- Access to testnet funds (guidance provided in workshop)
+- Access to mainnet NEAR funds (guidance provided in workshop)
 
 ## ⚡ Quick Start
 

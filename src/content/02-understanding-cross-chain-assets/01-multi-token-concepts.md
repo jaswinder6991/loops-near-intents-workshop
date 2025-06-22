@@ -1,4 +1,4 @@
-# 2.1: Understanding Multi-Token Assets
+Understanding Multi-Token Assets
 
 **Estimated Time:** 15 minutes  
 **Prerequisites:** Basic blockchain and token concepts  

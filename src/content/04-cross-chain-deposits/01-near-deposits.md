@@ -1,4 +1,4 @@
-# 4.1: Depositing NEAR Tokens
+Depositing NEAR Tokens
 
 **Estimated Time:** 20 minutes  
 **Prerequisites:** Completed environment setup with funded NEAR account  

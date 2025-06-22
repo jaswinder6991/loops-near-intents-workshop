@@ -1,4 +1,4 @@
-# 1.1: Welcome to NEAR Cross-Chain Swaps Workshop
+Welcome to NEAR Cross-Chain Swaps Workshop
 
 **Estimated Time:** 10 minutes  
 **Prerequisites:** Basic understanding of blockchain concepts  
@@ -50,7 +50,7 @@ This workshop is organized into focused modules:
 - Basic understanding of blockchain concepts (tokens, transactions, wallets)
 - Familiarity with command-line interfaces
 - Node.js development experience (helpful but not required)
-- Access to testnet funds (we'll help you get these)
+- Access to mainnet NEAR funds (we'll help you get these)
 
 ## Getting Started
 
