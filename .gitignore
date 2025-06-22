@@ -27,3 +27,5 @@ dist-ssr
 
 echo ".DS_Store" >> .gitignore
 echo "*.png" >> .gitignore  # If you don't need images in git
+
+temp/
