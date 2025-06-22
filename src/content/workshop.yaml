@@ -1,0 +1,132 @@
+title: "NEAR Cross-Chain Swaps Workshop"
+description: "A comprehensive hands-on workshop that teaches you to build cross-chain applications using NEAR Intents and the 1Click API."
+version: "1.0.0"
+duration: "3-4 hours"
+difficulty: "Intermediate"
+
+author:
+  name: "NEAR Community"
+  email: "developers@near.org"
+  website: "https://near.org"
+
+prerequisites:
+  - "Basic understanding of blockchain concepts"
+  - "Familiarity with command-line interfaces"
+  - "Node.js development experience (helpful but not required)"
+
+modules:
+  - id: "introduction"
+    title: "Introduction"
+    description: "Workshop overview and core concepts"
+    estimatedTime: "10 minutes"
+    sections:
+      - id: "welcome"
+        title: "Welcome to NEAR Cross-Chain Swaps Workshop"
+        file: "01-introduction/01-welcome.md"
+        estimatedTime: "10 minutes"
+
+  - id: "understanding-cross-chain-assets"
+    title: "Understanding Cross-Chain Assets"
+    description: "Core concepts and 1Click API architecture"
+    estimatedTime: "35 minutes"
+    sections:
+      - id: "multi-token-concepts"
+        title: "Understanding Multi-Token Assets"
+        file: "02-understanding-cross-chain-assets/01-multi-token-concepts.md"
+        estimatedTime: "15 minutes"
+      - id: "1click-api-overview"
+        title: "1Click API Overview"
+        file: "02-understanding-cross-chain-assets/02-1click-api-overview.md"
+        estimatedTime: "20 minutes"
+
+  - id: "environment-setup"
+    title: "Environment Setup"
+    description: "Development environment preparation"
+    estimatedTime: "25 minutes"
+    sections:
+      - id: "prerequisites"
+        title: "Prerequisites and Installation"
+        file: "03-environment-setup/01-prerequisites.md"
+        estimatedTime: "25 minutes"
+
+  - id: "cross-chain-deposits"
+    title: "Cross-Chain Deposits"
+    description: "Funding your cross-chain account"
+    estimatedTime: "20 minutes"
+    sections:
+      - id: "near-deposits"
+        title: "Depositing NEAR Tokens"
+        file: "04-cross-chain-deposits/01-near-deposits.md"
+        estimatedTime: "20 minutes"
+
+  - id: "asset-swapping"
+    title: "Asset Swapping"
+    description: "Performing on-chain swaps"
+    estimatedTime: "25 minutes"
+    sections:
+      - id: "near-to-eth"
+        title: "Swapping NEAR for ETH"
+        file: "05-asset-swapping/01-near-to-eth.md"
+        estimatedTime: "25 minutes"
+
+  - id: "cross-chain-withdrawals"
+    title: "Cross-Chain Withdrawals"
+    description: "Moving assets between chains"
+    estimatedTime: "30 minutes"
+    sections:
+      - id: "eth-to-arbitrum"
+        title: "Withdrawing ETH to Arbitrum"
+        file: "06-cross-chain-withdrawals/01-eth-to-arbitrum.md"
+        estimatedTime: "30 minutes"
+
+  - id: "advanced-workflows"
+    title: "Advanced Workflows"
+    description: "Complex multi-step operations"
+    estimatedTime: "35 minutes"
+    sections:
+      - id: "reverse-flows"
+        title: "Reverse Flows and Advanced Patterns"
+        file: "07-advanced-workflows/01-reverse-flows.md"
+        estimatedTime: "35 minutes"
+
+  - id: "conclusion"
+    title: "Workshop Conclusion"
+    description: "Summary and next steps"
+    estimatedTime: "10 minutes"
+    sections:
+      - id: "summary"
+        title: "Workshop Summary and Next Steps"
+        file: "08-conclusion/01-summary.md"
+        estimatedTime: "10 minutes"
+
+technologies:
+  - "NEAR Protocol"
+  - "1Click API"
+  - "TypeScript/JavaScript"
+  - "NEAR CLI"
+  - "Arbitrum"
+  - "Cross-Chain Bridges"
+
+learning_outcomes:
+  - "Execute cross-chain asset deposits, swaps, and withdrawals"
+  - "Integrate with the 1Click API for seamless cross-chain operations"
+  - "Understand multi-asset token standards and bridge mechanics"
+  - "Implement advanced workflows like arbitrage and reverse flows"
+  - "Monitor and debug cross-chain transactions"
+  - "Optimize for fees and execution speed in cross-chain operations"
+
+resources:
+  - title: "NEAR Protocol Documentation"
+    url: "https://docs.near.org"
+  - title: "1Click API Reference"
+    url: "https://docs.1click.xyz"
+  - title: "NEAR Intents Specification"
+    url: "https://github.com/near/neps"
+  - title: "NEAR Discord Community"
+    url: "https://near.chat"
+
+navigation:
+  showProgress: true
+  showEstimatedTime: true
+  allowSkipping: false
+  showTableOfContents: true 
