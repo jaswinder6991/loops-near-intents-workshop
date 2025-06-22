@@ -1,18 +1,116 @@
 title: "NEAR Cross-Chain Swaps Workshop"
-description: "A comprehensive hands-on workshop that teaches you to build cross-chain applications using NEAR Intents and the 1Click API."
+author: "NEAR Community"
 version: "1.0.0"
+release_date: "2025-01-08"
+description: >
+  A comprehensive hands-on workshop that teaches you to build cross-chain applications using NEAR Intents and the 1Click API.
+organization: "NEAR Foundation"
+website: "https://near.org"
+contact_email: "developers@near.org"
+license: "MIT"
+github_repo: "https://github.com/nearuaguild/near-intents-1click-example"
+tags:
+  - blockchain
+  - cross-chain
+  - intents
+  - defi
+  - workshop
 duration: "3-4 hours"
 difficulty: "Intermediate"
 
-author:
-  name: "NEAR Community"
-  email: "developers@near.org"
-  website: "https://near.org"
+long_description: |
+  Master the future of cross-chain DeFi with this comprehensive workshop on NEAR Intents and the 1Click API. Learn to build applications that seamlessly swap, bridge, and manage tokens across multiple blockchains without the typical complexity. Perfect for developers looking to create the next generation of user-friendly Web3 applications.
 
+call_to_action:
+  text: "Start Workshop"
+  link_type: "internal"
+  target: "01-introduction/01-welcome"
+
+# What you will learn section
+what_you_will_learn:
+  - "Master cross-chain asset swaps using NEAR Intents and 1Click API"
+  - "Build seamless token bridges between NEAR, Ethereum, and Arbitrum"
+  - "Implement advanced workflows like arbitrage and reverse flows"
+  - "Understand multi-asset token standards and bridge mechanics"
+  - "Optimize for fees and execution speed in cross-chain operations"
+
+# Prerequisites section
 prerequisites:
   - "Basic understanding of blockchain concepts"
   - "Familiarity with command-line interfaces"
   - "Node.js development experience (helpful but not required)"
+  - "Access to testnet funds (guidance provided in workshop)"
+
+# Workshop structure (three-column layout)
+workshop_structure:
+  - number: 1
+    title: "Foundation & Setup"
+    description: "Master cross-chain concepts, set up your development environment, and execute your first token deposits. Learn how NEAR Intents revolutionizes multi-blockchain interactions."
+    link: "Section?slug=01-introduction/01-welcome"
+    link_text: "Start Learning"
+    bg_color: "blue"
+  - number: 2
+    title: "Core Operations"
+    description: "Execute real cross-chain swaps and withdrawals using the 1Click API. Experience the power of intent-based transactions with hands-on NEAR to ETH swaps and Arbitrum withdrawals."
+    link: "Section?slug=04-cross-chain-deposits/01-near-deposits"
+    link_text: "Start Building"
+    bg_color: "green"
+  - number: 3
+    title: "Advanced Patterns"
+    description: "Implement sophisticated workflows including reverse flows, arbitrage strategies, and multi-hop operations. Build production-ready cross-chain applications."
+    link: "Section?slug=07-advanced-workflows/01-reverse-flows"
+    link_text: "Master Advanced"
+    bg_color: "purple"
+
+# Key features (four-card grid)
+key_features:
+  - title: "Instant Cross-Chain Swaps"
+    icon: "Zap"
+    description: "Swap tokens between blockchains in seconds using NEAR Intents"
+    bg_color: "blue"
+  - title: "1Click API Integration"
+    icon: "MousePointer"
+    description: "Simple API calls for complex cross-chain operations"
+    bg_color: "green"
+  - title: "Multi-Asset Management"
+    icon: "Layers"
+    description: "Handle tokens from multiple chains in unified interface"
+    bg_color: "orange"
+  - title: "Production-Ready Code"
+    icon: "Shield"
+    description: "Security best practices and error handling included"
+    bg_color: "red"
+
+# Frequently Asked Questions
+faqs:
+  - question: "What makes NEAR Intents different from traditional bridges?"
+    answer: "NEAR Intents abstract away bridge complexity, allowing you to express what you want to achieve rather than how to achieve it. The 1Click API handles routing, fee optimization, and execution automatically, making cross-chain operations as simple as single-chain transactions."
+  - question: "Do I need funds on multiple chains to complete this workshop?"
+    answer: "You only need a small amount of NEAR tokens (0.1-0.2 NEAR) to get started. The workshop will guide you through obtaining testnet funds and will show you how to move assets between chains as part of the learning process."
+  - question: "Can I use this in production applications?"
+    answer: "Absolutely! The workshop teaches production-ready patterns with proper error handling, security considerations, and optimization techniques. Many developers use these exact patterns in live applications processing real value."
+  - question: "How does this compare to building with traditional DEX aggregators?"
+    answer: "Traditional DEX aggregators only work within single chains. NEAR Intents with 1Click API enables true cross-chain aggregation, finding the best prices and routes across multiple blockchains automatically, opening up entirely new DeFi possibilities."
+
+faq_settings:
+  bg_color: "gray"
+  has_expandable: true
+
+# Get Started section
+get_started:
+  heading: "Ready to Build the Future of Cross-Chain DeFi?"
+  description: "Start your journey with NEAR Intents and revolutionize how users interact with multiple blockchains"
+  bg_color: "blue"
+  secondary_button:
+    text: "View Prerequisites"
+    link: "Section?slug=03-environment-setup/01-prerequisites"
+
+# Other global UI settings
+ui_settings:
+  primary_button_bg: "black"
+  primary_button_text: "white"
+  secondary_button_bg: "white"
+  secondary_button_text: "black"
 
 modules:
   - id: "introduction"
