@@ -67,26 +67,48 @@ near account create-account fund-later use-auto-generation
 This will:
 - Generate a new key pair
 - Create an account ID (64 random characters)
-- Save the credentials locally
-- Display your new account ID
+- Save the credentials to a JSON file in `~/.near-credentials/implicit/`
+- Display the file path where your account was saved
 
-### Save Your Account Information
-The CLI will display something like:
+### Find Your Account ID
+The CLI will save your account to a file and display something like:
 ```bash
-The account 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef will be created.
-Save the account information to use it later.
+The file "/Users/username/.near-credentials/implicit/c6fca557927e803b903013349b552edbceddd57a72d8b305d670655208d03665.json" was saved successfully
 ```
+
+Your account ID is the filename (without the .json extension). In this example, it's:
+`c6fca557927e803b903013349b552edbceddd57a72d8b305d670655208d03665`
+
+**Alternative methods to find your account ID:**
+
+**Method 1: Check the filename**
+```bash
+ls ~/.near-credentials/implicit/
+```
+
+**Method 2: View account details**
+```bash
+cat ~/.near-credentials/implicit/*.json
+```
+
+This will show all your accounts with their `implicit_account_id` field.
 
 **Important:** Copy and save this account ID - you'll need it throughout the workshop.
 
-### Export Your Private Key
-You'll need your private key for the workshop scripts:
+### Get Your Private Key
+You'll need your private key for the workshop scripts. Extract it directly from the JSON file:
 
 ```bash
-near account export-account YOUR_ACCOUNT_ID using-private-key network-config mainnet
+cat ~/.near-credentials/implicit/YOUR_ACCOUNT_ID.json | grep -o '"private_key":"[^"]*"' | cut -d'"' -f4
 ```
 
-Replace `YOUR_ACCOUNT_ID` with your actual account ID. Save the private key that's displayed.
+Replace `YOUR_ACCOUNT_ID` with your actual account ID. This will output just the private key value:
+
+```bash
+ed25519:5hDAZYSw9GiFxL68c8pbxVfWXePM9Tx9DqxdhHsws16eWbiAuWNS1816bFDNKpeRZBUxHnFXGn6H6hnJKcYk4ha4
+```
+
+**Important:** Copy and save this complete private key value - you'll need it for the environment configuration.
 
 ## Step 3: Fund Your Account
 
