@@ -143,10 +143,11 @@ yarn install
 ### Verify Package Installation
 Check that key packages are installed:
 ```bash
-npm list near-api-js
+cd near-intents-1click-example
+npm list @near-js/accounts
 ```
 
-You should see the near-api-js package version.
+You should see the @near-js/accounts package version.
 
 ## Step 6: Configure Environment Variables
 
@@ -162,7 +163,7 @@ Open `.env` in your preferred editor and fill in these values:
 
 ```bash
 # Your NEAR account ID (the 64-character string from earlier)
-NEAR_ACCOUNT_ID=your_account_id_here
+ACCOUNT_ID=your_account_id_here
 
 # Your NEAR private key (from the export command)
 NEAR_PRIVATE_KEY=your_private_key_here
@@ -210,42 +211,14 @@ You should see version numbers for both.
 Create a quick test file:
 
 ```bash
-echo 'console.log("NEAR Account:", process.env.NEAR_ACCOUNT_ID);' > test-env.js
+echo 'console.log("NEAR Account:", process.env.ACCOUNT_ID);' > test-env.js
 node -r dotenv/config test-env.js
 rm test-env.js
 ```
 
 You should see your account ID printed.
 
-## Step 8: Register with wrap.near Contract
-
-Before depositing NEAR tokens, register with the wrap.near contract:
-
-```bash
-near contract call-function as-transaction wrap.near storage_deposit \
-  json-args '{"account_id": "YOUR_ACCOUNT_ID"}' \
-  prepaid-gas '30.0 Tgas' \
-  attached-deposit '0.00125 NEAR' \
-  sign-as YOUR_ACCOUNT_ID \
-  network-config mainnet \
-  sign-with-keychain send
-```
-
-**Cost:** ~0.00125 NEAR (one-time fee)  
-**Purpose:** Required before any NEAR deposits in Module 4
-
-## Balance Planning
-
-**Starting Balance:** 0.2 NEAR (provided)
-**Cost Breakdown:**
-- Contract registration: ~0.00125 NEAR
-- Gas fees: ~0.005 NEAR (all operations)
-- Workshop operations: ~0.1 NEAR 
-- Safety buffer: ~0.09 NEAR
-
-**Important:** Keep at least 0.05 NEAR in your account for gas fees.
-
-## Step 9: Explore Available Tokens
+## Step 8: Explore Available Tokens
 
 Let's verify the 1Click API is accessible and see what tokens are available:
 
@@ -300,8 +273,6 @@ Excellent! Your development environment is now set up and ready. You have:
 - ✅ A funded NEAR account
 - ✅ Project dependencies installed  
 - ✅ Environment variables configured
-- ✅ Registered with wrap.near contract
-- ✅ Planned your balance allocation
 - ✅ Verified connection to NEAR and 1Click API
 
 Now let's start with your first cross-chain operation: depositing NEAR tokens into the Intents contract.

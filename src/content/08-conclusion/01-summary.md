@@ -187,7 +187,7 @@ Create a basic web interface that:
 
 ### Development Tools
 - [NEAR CLI Reference](mdc:https://docs.near.org/tools/near-cli)
-- [near-api-js Documentation](mdc:https://docs.near.org/tools/near-api-js)
+- [@near-js Documentation](mdc:https://docs.near.org/tools/near-api-js)
 - [NEAR Explorer](mdc:https://explorer.near.org) for transaction monitoring
 - [NEAR Wallet](mdc:https://wallet.near.org) for account management
 
