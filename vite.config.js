@@ -82,35 +82,40 @@ function workshopYamlWatcherPlugin() {
   return {
     name: 'workshop-yaml-watcher',
     configureServer(server) {
-      // Get the absolute path to workshop.yaml
-      const workshopYamlPath = path.resolve(__dirname, 'src/content/workshop.yaml');
-      
-      // Make sure the file exists before setting up the watcher
-      if (!fs.existsSync(workshopYamlPath)) {
-        console.warn(`⚠️ Could not find workshop.yaml at ${workshopYamlPath}`);
-        return;
-      }
-      
-      console.log(`👀 Setting up watcher for workshop.yaml at ${workshopYamlPath}`);
-      
-      // Add watcher for workshop.yaml using Vite's watcher API which is more reliable
-      server.watcher.add(workshopYamlPath);
-      
-      // Listen for change events on the workshop.yaml file
-      server.watcher.on('change', (changedPath) => {
-        if (changedPath === workshopYamlPath) {
-          console.log('🔄 workshop.yaml changed, forcing page reload...');
-          
-          // Force clients to reload
-          server.ws.send({
-            type: 'full-reload'
-          });
-          
-          // Clear any module cache that might be using the yaml data
-          // This ensures getWorkshopMetadata() gets fresh data on next call
-          server.moduleGraph.invalidateAll();
+      try {
+        // Get the absolute path to workshop.yaml
+        const workshopYamlPath = path.resolve(__dirname, 'src/content/workshop.yaml');
+        
+        // Make sure the file exists before setting up the watcher
+        if (!fs.existsSync(workshopYamlPath)) {
+          console.warn(`⚠️ Could not find workshop.yaml at ${workshopYamlPath}`);
+          return;
         }
-      });
+        
+        console.log(`👀 Setting up watcher for workshop.yaml at ${workshopYamlPath}`);
+        
+        // Add watcher for workshop.yaml using Vite's watcher API which is more reliable
+        server.watcher.add(workshopYamlPath);
+        
+        // Listen for change events on the workshop.yaml file
+        server.watcher.on('change', (changedPath) => {
+          if (changedPath === workshopYamlPath) {
+            console.log('🔄 workshop.yaml changed, forcing page reload...');
+            
+            // Force clients to reload
+            server.ws.send({
+              type: 'full-reload'
+            });
+            
+            // Clear any module cache that might be using the yaml data
+            // This ensures getWorkshopMetadata() gets fresh data on next call
+            server.moduleGraph.invalidateAll();
+          }
+        });
+      } catch (error) {
+        console.error('Error setting up workshop.yaml watcher:', error);
+        // Don't fail the entire build if watcher setup fails
+      }
     }
   };
 }

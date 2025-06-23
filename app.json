@@ -1,0 +1,25 @@
+{
+  "name": "NEAR Intents Workshop",
+  "description": "A comprehensive hands-on workshop for building cross-chain applications using NEAR Intents and the 1Click API",
+  "repository": "https://github.com/shaiss/OzCity-near-intents-workshop",
+  "logo": "https://near.org/assets/img/near_logo.svg",
+  "keywords": ["near", "blockchain", "cross-chain", "intents", "defi", "workshop"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "stack": "heroku-22"
+} 
