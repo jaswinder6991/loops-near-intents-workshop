@@ -7,6 +7,50 @@ import { fileURLToPath } from "url";
 // Get the directory name in ESM
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Custom plugin to copy content files to dist for production
+function copyContentPlugin() {
+  return {
+    name: 'copy-content',
+    writeBundle() {
+      // Only run during build (production mode)
+      console.log('🔄 Copy content plugin running...');
+      
+      try {
+        const srcContentPath = path.resolve(__dirname, 'src/content');
+        const distContentPath = path.resolve(__dirname, 'dist/src/content');
+        
+        // Create the target directory
+        fs.mkdirSync(path.dirname(distContentPath), { recursive: true });
+        
+        // Copy the content directory recursively
+        function copyDirectory(src, dest) {
+          if (!fs.existsSync(dest)) {
+            fs.mkdirSync(dest, { recursive: true });
+          }
+          
+          const entries = fs.readdirSync(src, { withFileTypes: true });
+          
+          for (const entry of entries) {
+            const srcPath = path.join(src, entry.name);
+            const destPath = path.join(dest, entry.name);
+            
+            if (entry.isDirectory()) {
+              copyDirectory(srcPath, destPath);
+            } else {
+              fs.copyFileSync(srcPath, destPath);
+            }
+          }
+        }
+        
+        copyDirectory(srcContentPath, distContentPath);
+        console.log('✅ Content files copied to dist/src/content');
+      } catch (error) {
+        console.error('Error copying content files:', error);
+      }
+    }
+  };
+}
+
 // Custom plugin to handle directory listing for dynamic content loading
 function directoryListingPlugin() {
   return {
@@ -126,6 +170,7 @@ export default defineConfig({
     react(),
     directoryListingPlugin(),
     workshopYamlWatcherPlugin(),
+    copyContentPlugin(),
   ],
   // Add a timestamp to filenames to prevent caching issues
   build: {
