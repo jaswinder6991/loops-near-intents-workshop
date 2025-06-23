@@ -50,7 +50,7 @@ This workshop is organized into focused modules:
 - Basic understanding of blockchain concepts (tokens, transactions, wallets)
 - Familiarity with command-line interfaces
 - Node.js development experience (helpful but not required)
-- Access to mainnet NEAR funds (we'll help you get these)
+- Students will receive 0.2 NEAR mainnet funds (includes contract registration fees)
 
 ## Getting Started
 

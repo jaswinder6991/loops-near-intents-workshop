@@ -12,6 +12,8 @@ Withdrawing ETH to Arbitrum
 
 In the previous module, you swapped NEAR for ETH entirely within the NEAR ecosystem. Now you'll learn how to move those ETH tokens to a different blockchain - Arbitrum - enabling you to use them in the broader Ethereum ecosystem.
 
+> **⚠️ Important Expectation Setting:** Cross-chain withdrawals take 5-15 minutes to complete. The withdrawal script will timeout after 60 seconds showing "Quote hasn't been settled" - this is completely normal and does NOT mean your transaction failed. Your ETH transfer continues processing in the background.
+
 ## Cross-Chain Withdrawals vs. On-Chain Swaps
 
 **Web2 Parallel:** This is like transferring money from your digital wallet back to your traditional bank account. While your previous swap was like exchanging currencies within the same digital platform, a withdrawal actually moves funds between different financial systems.
@@ -172,6 +174,29 @@ flowchart TD
 
 **Key Point**: Smaller amounts have higher percentage fees due to fixed bridge costs. Consider batching operations for efficiency.
 
+## Cross-Chain Operation Timing
+
+**Total Operation Duration:** 5-15 minutes  
+**Script Timeout:** 60 seconds (normal behavior)  
+**Important:** When the script times out, your cross-chain transfer is still processing successfully!
+
+### Understanding Script vs. Operation Timing:
+
+**Script Behavior:**
+- ✅ Script will timeout after 60 seconds showing "Quote hasn't been settled"
+- ✅ This is **normal** and **expected** behavior
+- ❌ **DO NOT** assume the operation failed
+- ❌ **DO NOT** retry the script
+
+**Cross-Chain Operation (Continues After Script Timeout):**
+| Phase | Duration | Status | What's Happening |
+|-------|----------|--------|------------------|
+| PENDING_DEPOSIT | 1-2 min | Solver detecting transaction | Bridge solver confirms your NEAR transaction |
+| PROCESSING | 5-15 min | Bridge executing transfer | Cross-chain bridge moves ETH to Arbitrum |
+| Complete | Final | Tokens delivered | ETH appears in your Arbitrum wallet |
+
+> **Key Point:** The script timing out at 60 seconds is like hanging up the phone after placing an order - your order is still being processed even though you're no longer on the call.
+
 ## Executing the Withdrawal
 
 Now let's run the withdrawal script:
@@ -191,9 +216,14 @@ Quote received:
   Estimated time: 5-10 minutes
 Executing withdrawal...
 Transaction hash on NEAR: GHI789JKL...
-Withdrawal initiated successfully.
-Monitor Arbitrum transaction at: https://arbiscan.io/tx/0xabc123...
+Waiting for quote execution to complete...
+Current quote status is PENDING_DEPOSIT
+Current quote status is PENDING_DEPOSIT
+... (script continues for ~60 seconds then times out)
+Quote hasn't been settled within timeout period
 ```
+
+> **Expected Behavior:** The script will show "Quote hasn't been settled within timeout period" after 60 seconds. This is completely normal! Your cross-chain transfer is still processing.
 
 ## Understanding Status Progression During Withdrawal
 
@@ -256,15 +286,41 @@ near view intents.near mt_batch_balance_of '{
 
 You should see reduced or zero ETH balance.
 
+## When Script Times Out (After 60 Seconds)
+
+**This is normal!** Here's what to do when you see "Quote hasn't been settled within timeout period":
+
+1. **✅ DO:** Stay calm - your transaction is processing successfully
+2. **❌ DON'T:** Retry the script (this could create duplicate transactions)
+3. **✅ DO:** Check your transaction on [Nearblocks.io](https://nearblocks.io) using the TX hash shown
+4. **✅ DO:** Wait 10-15 minutes total, then verify balances:
+   ```bash
+   near view intents.near mt_batch_balance_of '{"account_id": "YOUR_ACCOUNT_ID", "token_ids": ["nep141:eth.bridge.near"]}' --networkId mainnet
+   ```
+5. **Success indicator:** Your NEAR ETH balance decreases (tokens were sent to bridge)
+6. **Final confirmation:** Check your Arbitrum wallet for incoming ETH
+
 ## Understanding Withdrawal Timing
 
-### Typical Timeline
+### Script Timeline vs. Operation Timeline
+
+**Script Execution (What You See):**
+1. **0-60 seconds**: Script runs, shows status updates, then times out
+2. **Script timeout message**: "Quote hasn't been settled within timeout period"
+3. **Your action**: Close terminal, wait patiently
+
+**Actual Cross-Chain Operation (Behind the Scenes):**
 1. **0-30 seconds**: NEAR transaction confirms
-2. **30 seconds - 2 minutes**: Solver detects and processes
+2. **30 seconds - 2 minutes**: Solver detects and processes  
 3. **2-15 minutes**: Cross-chain bridge execution
 4. **Total**: Usually 5-15 minutes end-to-end
 
-### Factors Affecting Speed
+### Why Scripts Timeout Early
+- **Script timeout**: 60 seconds (prevents indefinite hanging)
+- **Operation duration**: 5-15 minutes (real cross-chain processing time)
+- **Design choice**: Scripts end early so you're not stuck waiting at your computer
+
+### Factors Affecting Operation Speed
 - **Bridge Congestion**: High usage can slow processing
 - **Gas Prices**: High Arbitrum gas can delay execution
 - **Solver Efficiency**: Different solvers have different speeds
@@ -321,7 +377,10 @@ You've successfully completed your first cross-chain withdrawal:
 - ✅ Moved ETH tokens from NEAR to Arbitrum blockchain
 - ✅ Learned about cross-chain bridge mechanics and fees  
 - ✅ Experienced true blockchain interoperability
-- ✅ Understood the trade-offs between speed and cross-chain functionality
+- ✅ Understood that script timeouts (60s) are normal for cross-chain operations (5-15 min)
+- ✅ Learned how to monitor and verify cross-chain transactions
+
+**Key Takeaway:** Cross-chain operations require patience! When scripts timeout, your transaction is still processing successfully in the background.
 
 Your ETH is now native on Arbitrum and can be used with any Ethereum-compatible application.
 
