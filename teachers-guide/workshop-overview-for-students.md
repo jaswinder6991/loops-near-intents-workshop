@@ -17,7 +17,6 @@ By the end of this workshop, you will have:
 
 ### Module 1: Introduction (10 minutes)
 **What happens:** Workshop logistics and expectations  
-**Why valuable:** Understand what makes this different from traditional blockchain workshops  
 **Key insight:** Intent-based operations abstract away complexity
 
 ### Module 2: Understanding Cross-Chain Assets (20 minutes)
