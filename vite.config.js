@@ -171,7 +171,9 @@ export default defineConfig({
       "52839a0c-803c-4ec0-ac8a-60ad39c69f64-00-1g2qs1o5dqiy.kirk.replit.dev",
       "host.docker.internal",
       "endless-squirrel-47.rshare.io",
-      "*.rshare.io"
+      "*.rshare.io",
+      "near-intents-workshop-ozcity-8e8468094988.herokuapp.com",
+      "*.herokuapp.com"
     ],
     host: "0.0.0.0",
     port: 5173
