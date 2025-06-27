@@ -32,6 +32,9 @@ The NEAR CLI is essential for blockchain interactions. We'll use the Rust-based 
 **Web2 Parallel:** Installing NEAR CLI is like installing a specialized database client that lets you interact with the NEAR blockchain database from your terminal.
 
 ### Option A: Install via npm (Recommended)
+
+Ensure you're not running in windows32 directory.  Run in your ~/Users/NAME directory
+
 ```bash
 npm install -g near-cli-rs
 ```
