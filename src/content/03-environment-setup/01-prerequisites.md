@@ -61,7 +61,7 @@ You'll need a NEAR account to interact with the Intents contract. Let's create o
 An implicit account is defined by a cryptographic key pair rather than a human-readable name:
 
 ```bash
-near account create-account fund-later use-auto-generation
+near account create-account sponsor-by-faucet-service <example-name.testnet> autogenerate-new-keypair print-to-terminal network-config testnet create
 ```
 
 This will:
