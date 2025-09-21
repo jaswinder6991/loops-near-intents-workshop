@@ -39,13 +39,7 @@
 3. **Address any missing registrations immediately**:
    ```bash
    # For students who missed registration:
-   near contract call-function as-transaction wrap.near storage_deposit \
-     json-args '{"account_id": "STUDENT_ACCOUNT"}' \
-     prepaid-gas '30.0 Tgas' \
-     attached-deposit '0.00125 NEAR' \
-     sign-as STUDENT_ACCOUNT \
-     network-config mainnet \
-     sign-with-keychain send
+   near contract call-function as-transaction wrap.near storage_deposit json-args '{"account_id": "STUDENT_ACCOUNT"}' prepaid-gas '100.0 Tgas' attached-deposit '0.00125 NEAR' sign-as STUDENT_ACCOUNT network-config mainnet sign-with-access-key-file ~/.near-credentials/implicit/STUDENT_ACCOUNT.json
    ```
 
 ### Step 2: Coordinate First Deposit (8 minutes)
