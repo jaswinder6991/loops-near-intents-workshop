@@ -56,62 +56,54 @@ near-cli-rs 0.7.0
 
 > **Note:** If you see "command not found," you may need to restart your terminal or check your PATH configuration.
 
-## Step 2: Create a NEAR Account
 
-You'll need a NEAR account to interact with the Intents contract. Let's create one and fund it.
+## Step 2: Create a NEAR Account  
+You'll need a NEAR account to interact with the Intents contract. Let's create one on mainnet.  
 
-### Create an Implicit Account
-An implicit account is defined by a cryptographic key pair rather than a human-readable name:
+> **Important:** NEAR Intents and the 1Click API only work on mainnet. You cannot use testnet for this workshop as the intent infrastructure is not available there.  
 
-```bash
-near account create-account sponsor-by-faucet-service <example-name.testnet> autogenerate-new-keypair print-to-terminal network-config testnet create
-```
+### Create an Implicit Account  
+An implicit account is defined by a cryptographic key pair rather than a human-readable name:  
+```bash  
+near account create-account fund-later use-auto-generation  
+```  
+This will:  
+- Prompt you to specify where to save the JSON file (default: `/Users/your_username/.near-credentials/implicit/`)  
+- Generate a new key pair  
+- Create an account ID (64 random characters)  
+- Save the credentials to a JSON file in the specified folder  
+- Display the file path where your account was saved  
 
-This will:
-- Generate a new key pair
-- Create an account ID (64 random characters)
-- Save the credentials to a JSON file in `~/.near-credentials/implicit/`
-- Display the file path where your account was saved
+Example output:  
+```bash  
+INFO The file "/Users/your_username/.near-credentials/implicit/7fc6c2bfa4370bf01a0494636736ca20666c1ddc7dcf61b6c415bf69e8a61e52.json" was saved successfully  
+```  
 
-### Find Your Account ID
-The CLI will save your account to a file and display something like:
-```bash
-The file "/Users/username/.near-credentials/implicit/c6fca557927e803b903013349b552edbceddd57a72d8b305d670655208d03665.json" was saved successfully
-```
+### Find Your Account ID  
+Your account ID is the filename (without the .json extension). In the example above, it's:  
+`7fc6c2bfa4370bf01a0494636736ca20666c1ddc7dcf61b6c415bf69e8a61e52`  
 
-Your account ID is the filename (without the .json extension). In this example, it's:
-`c6fca557927e803b903013349b552edbceddd57a72d8b305d670655208d03665`
+**Alternative methods to find your account ID:**  
+**Method 1: Check the filename**  
+```bash  
+ls ~/.near-credentials/implicit/  
+```  
+**Method 2: View account details**  
+```bash  
+cat ~/.near-credentials/implicit/*.json  
+```  
+This will show all your accounts with their `implicit_account_id` field.  
 
-**Alternative methods to find your account ID:**
+**Important:** Copy and save this account ID - you'll need it throughout the workshop.  
 
-**Method 1: Check the filename**
-```bash
-ls ~/.near-credentials/implicit/
-```
+### Get Your Private Key  
+You'll need your private key for the workshop scripts. Extract it directly from the JSON file:  
+```bash  
+cat ~/.near-credentials/implicit/YOUR_ACCOUNT_ID.json
+```  
+Replace `YOUR_ACCOUNT_ID` with your actual account ID. 
 
-**Method 2: View account details**
-```bash
-cat ~/.near-credentials/implicit/*.json
-```
-
-This will show all your accounts with their `implicit_account_id` field.
-
-**Important:** Copy and save this account ID - you'll need it throughout the workshop.
-
-### Get Your Private Key
-You'll need your private key for the workshop scripts. Extract it directly from the JSON file:
-
-```bash
-cat ~/.near-credentials/implicit/YOUR_ACCOUNT_ID.json | grep -o '"private_key":"[^"]*"' | cut -d'"' -f4
-```
-
-Replace `YOUR_ACCOUNT_ID` with your actual account ID. This will output just the private key value:
-
-```bash
-ed25519:5hDAZYSw9GiFxL68c8pbxVfWXePM9Tx9DqxdhHsws16eWbiAuWNS1816bFDNKpeRZBUxHnFXGn6H6hnJKcYk4ha4
-```
-
-**Important:** Copy and save this complete private key value - you'll need it for the environment configuration.
+**Important:** Copy and save this complete private key value - you'll need it for the environment configuration.  
 
 ## Step 3: Fund Your Account
 
